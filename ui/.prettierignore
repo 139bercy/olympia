@@ -1,0 +1,17 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML files:
+*.css
+*.eot
+*.html
+*.jpg
+*.md
+*.otf
+*.png
+*.scss
+*.svg
+*.ttf
+*.woff
+*.woff2
