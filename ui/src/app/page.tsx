@@ -1,4 +1,3 @@
-
 import { Button } from "@codegouvfr/react-dsfr/Button";
 
 export default function Page() {
