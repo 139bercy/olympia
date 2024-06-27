@@ -5,86 +5,61 @@ import { StartDsfr } from "./StartDsfr";
 import { defaultColorScheme } from "./defaultColorScheme";
 import { Header } from "@codegouvfr/react-dsfr/Header";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
+import { Badge } from "@codegouvfr/react-dsfr/Badge";
+import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
 import Link from "next/link";
 
 export default function RootLayout({ children }: { children: JSX.Element }) {
   //NOTE: The lang parameter is optional and defaults to "fr"
   const lang = "fr";
   return (
-    <html {...getHtmlAttributes({ defaultColorScheme, lang })}>
+      <html {...getHtmlAttributes({ defaultColorScheme, lang })}>
       <head>
         <StartDsfr />
         <DsfrHead Link={Link} />
       </head>
       <body>
-        <DsfrProvider lang={lang}>
-          <Header
+      <DsfrProvider lang={lang}>
+        <Header
             brandTop={
               <>
-                INTITULE
+                Ministère
                 <br />
-                OFFICIEL
+                de l'économie
+                <br />
+                des finances
+                <br />
+                et de la souveraineté
+                <br />
+                industrielle et numérique
               </>
             }
             homeLinkProps={{
               href: "/",
               title:
-                "Accueil - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)",
+                  "Accueil - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)",
             }}
-            id="fr-header-simple-header"
-            navigation={[
-              {
-                linkProps: {
-                  href: "#",
-                  target: "_self",
-                },
-                text: "accès direct",
-              },
-              {
-                isActive: true,
-                linkProps: {
-                  href: "#",
-                  target: "_self",
-                },
-                text: "accès direct",
-              },
-              {
-                linkProps: {
-                  href: "#",
-                  target: "_self",
-                },
-                text: "accès direct",
-              },
-              {
-                linkProps: {
-                  href: "#",
-                  target: "_self",
-                },
-                text: "accès direct",
-              },
-            ]}
-          />
+            id="fr-header-simple-header-with-service-title-and-tagline"
+            serviceTitle={
+              <>
+                OlympIA{" "}
+                <Badge as="span" noIcon severity="success">
+                  Beta
+                </Badge>
+              </>
+            }
+        />
 
-          {children}
-          <Footer
+        {children}
+        <Footer
             accessibility="fully compliant"
-            contentDescription="
-    Ce message est à remplacer par les informations de votre site.
-
-    Comme exemple de contenu, vous pouvez indiquer les informations
-    suivantes : Le site officiel d’information administrative pour les entreprises.
-    Retrouvez toutes les informations et démarches administratives nécessaires à la création,
-    à la gestion et au développement de votre entreprise.
-    "
             termsLinkProps={{
               href: "#",
             }}
-            websiteMapLinkProps={{
-              href: "#",
-            }}
-          />
-        </DsfrProvider>
+            bottomItems={[headerFooterDisplayItem]}
+        />
+      </DsfrProvider>
       </body>
-    </html>
+      </html>
   );
 }
