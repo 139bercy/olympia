@@ -1,11 +1,24 @@
-import { Button } from "@codegouvfr/react-dsfr/Button";
+// Styling
+import './globals.css'
+
+// Components
+import HeaderOlympia from  "../components/HeaderOlympia"
+import { FooterOlympia } from  "../components/FooterOlympia"
+
 
 export default function Page() {
 
     return (
         <>
-        <h1>Hello World!</h1>
-        <Button>Click me</Button>
+        <div className='container-colonne'>
+          <HeaderOlympia />
+          <div className='mid-container-margin'>
+            Bienvenue sur Olympia!
+          </div>
+          <div className='footer-margin' >
+          <FooterOlympia />
+          </div>
+        </div>
         </>
     );
 
