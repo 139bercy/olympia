@@ -1,10 +1,17 @@
 "use client";
 
+// Styling
+import '../../globals.css'
+import styles from "./enregistrement.module.css"
+
+// Components
 import { Input } from "@codegouvfr/react-dsfr/Input";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import styles from "./enregistrement.module.css"
+import HeaderOlympia from '@/components/HeaderOlympia';
+import { FooterOlympia } from '@/components/FooterOlympia';
+import { BASE_APP_URL } from '../../../components/constantes/constantes.jsx';
 
 type InputState = 'default' | 'success' | 'error' | undefined;
 
@@ -86,6 +93,7 @@ export default function Enregistrement() {
     const handleLogin = async () => {
         console.log("LOGIN")
         console.log(credentials)
+        router.push(BASE_APP_URL + "/authentification/connexion");
         /* const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/user/enregistrement", {
             method: "POST",
             headers: {
@@ -123,75 +131,75 @@ export default function Enregistrement() {
 
     return (
         <>
-            <h1>S'enregistrer</h1>
-            <div className={styles['input-width']}>
-                <Input
-                    label="Email"
-                    state={mailInputState}
-                    stateRelatedMessage={mailInputMessage}
-                    value={credentials.mail}
-                    onChange={handleInputChange}
-                    nativeInputProps={{
-                        type: "mail",
-                        pattern: ".+@finances.gouv.fr",
-                        name: "mail"
-                    }}
-                />
-            </div>
-            <div className={styles['input-width']}>
-                <Input
-                    label="Identifiant"
-                    state={usernameInputState}
-                    stateRelatedMessage={usernameInputMessage}
-                    value={credentials.username}
-                    onChange={handleInputChange}
-                    nativeInputProps={{
-                        name: "username"
-                    }}
-                />
+            <div className='container-colonne'>
+                <HeaderOlympia />
+                <h1>S'enregistrer</h1>
+                <div>
 
-            </div>
-            <div className={styles['input-width']}>
-                <Input
-                    label="Mot de passe"
-                    state={passwordInputState}
-                    stateRelatedMessage={passwordInputMessage}
-                    value={credentials.password}
-                    onChange={handleInputChange}
-                    nativeInputProps={{
-                        name: "password",
-                        type: "password"
-                    }}
-                />
-            </div>
-            <div className={styles['input-width']}>
-                <Input
-                    label="Confirmer votre mot de passe"
-                    state={passwordValidationInputState}
-                    stateRelatedMessage={passwordValidationInputMessage}
-                    value={credentials.passwordValidation}
-                    onChange={handleInputChange}
-                    nativeInputProps={{
-                        name: "passwordValidation",
-                        type: "password"
-                    }}
-                />
-            </div>
-            <div className={styles['button-margin']}>
-                <Button
-                    onClick={handleLogin}
-                >
-                    S'enregistrer
-                </Button>
+                    <div className='input-width'>
+                        <Input
+                            label="Email"
+                            state={mailInputState}
+                            stateRelatedMessage={mailInputMessage}
+                            value={credentials.mail}
+                            onChange={handleInputChange}
+                            nativeInputProps={{
+                                type: "mail",
+                                pattern: ".+@finances.gouv.fr",
+                                name: "mail"
+                            }}
+                        />
+                    </div>
+                    <div className='input-width'>
+                        <Input
+                            label="Identifiant"
+                            state={usernameInputState}
+                            stateRelatedMessage={usernameInputMessage}
+                            value={credentials.username}
+                            onChange={handleInputChange}
+                            nativeInputProps={{
+                                name: "username"
+                            }}
+                        />
+
+                    </div>
+                    <div className='input-width'>
+                        <Input
+                            label="Mot de passe"
+                            state={passwordInputState}
+                            stateRelatedMessage={passwordInputMessage}
+                            value={credentials.password}
+                            onChange={handleInputChange}
+                            nativeInputProps={{
+                                name: "password",
+                                type: "password"
+                            }}
+                        />
+                    </div>
+                    <div className='input-width'>
+                        <Input
+                            label="Confirmer votre mot de passe"
+                            state={passwordValidationInputState}
+                            stateRelatedMessage={passwordValidationInputMessage}
+                            value={credentials.passwordValidation}
+                            onChange={handleInputChange}
+                            nativeInputProps={{
+                                name: "passwordValidation",
+                                type: "password"
+                            }}
+                        />
+                    </div>
+                    <div className={styles['button-margin']}>
+                        <Button
+                            onClick={handleLogin}
+                        >
+                            S'enregistrer
+                        </Button>
+                    </div>
+                </div>
+
+                <FooterOlympia />
             </div>
         </>
     );
 }
-function setEmailMessage(arg0: string) {
-    throw new Error("Function not implemented.");
-}
-
-function setEmailState(arg0: string) {
-    throw new Error("Function not implemented.");
-}
-
